@@ -1,4 +1,4 @@
-// Adafruit Tricket Mini 3v/5v Auto PICKnMIX for MVS 161 in 1 (Bananna Cart)
+// Adafruit Trinket Mini 3v/5v Auto PICKnMIX for MVS 161 in 1 (Banana Cart)
 //
 // Start button will be held for 5 seconds with POWER ON
 // 
