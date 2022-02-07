@@ -10,7 +10,7 @@
 //  0   - JAMMA PIN 17
 //  1   - JAMMA PIN 25
 //
-// In the above setup - holding the D button during POWER ON will skip PICKnMIX and display the 161 in 1 menu
+// In the above setup - The Holding the D button during POWER ON will skip PICKnMIX
 //
 // Does NOT work with standard Adafruit Trinket Mini 3v/5v bootloader (takes more than 2 seconds before code executes)
 // Must use Bootloader found here: https://forums.adafruit.com/download/file.php?id=34218 (trinketloader_skippow25.zip) 
@@ -21,11 +21,17 @@
 
 int START = 0;                            // Start button connected to this pin (JAMMA pin 17) 
 int PNM_DISABLE = 1;                      // button that will disable PICKnMIX connected to this pin (JAMMA pin 22=A 23=B 24=C 25=D)
+int SKIP;
+
 void setup() {
   sleep_disable();                        // disable sleep mode 
+  
+
   pinMode(START, OUTPUT);                 // sets the digital pin 0 connected to Start button as OUTPUT
   pinMode(PNM_DISABLE, INPUT);            // sets the digital pin 1 connected to PNM_DISABLE button as INPUT
-  if (digitalRead(PNM_DISABLE) == HIGH) { // If PNM_DISABLE button is NOT pressed (still in HIGH state)
+  digitalWrite(START, HIGH);                                        
+  SKIP =digitalRead(PNM_DISABLE);         // check the PNM_DISABLE button state
+  if (SKIP == HIGH) {                     // If PNM_DISABLE button is NOT pressed (still in HIGH state)
     digitalWrite(START, LOW);             // sets the digital pin 0 to GND (Hold Start button)
     delay(5000);                          // waits for 5 seconds to enable PICKnMIX
   }
